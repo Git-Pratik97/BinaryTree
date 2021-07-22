@@ -2,13 +2,13 @@
 
 using namespace std;
 
-struct Node 
+struct Node
 {
     int data;
     Node* left;
     Node* right;
 
-    Node(int val)
+    Node (int val)
     {
         data = val;
         left = NULL;
@@ -16,7 +16,7 @@ struct Node
     }
 };
 
-void print_level_order(Node* root)
+void right_view(Node* root)
 {
     if (root == NULL)
     {
@@ -25,28 +25,31 @@ void print_level_order(Node* root)
 
     queue<Node*> q;
     q.push(root);
-    q.push(NULL);
 
     while(!q.empty())
     {
-        Node* node = q.front();
-        q.pop();
-        if(node != NULL)
+        int n = q.size();
+       
+
+        for (int i = 0; i < n; i++)
         {
-            cout << node->data << " ";
-            if(node->left)
+            Node* node = q.front();
+            q.pop();
+            if (i == n-1)
+            {
+                cout << node->data << " ";
+            }
+
+            if (node->right != NULL)
             {
                 q.push(node->left);
             }
-            if(node->right)
+
+            if (node->right != NULL)
             {
                 q.push(node->right);
             }
-        }
-        else if (!q.empty())
-        {
-            q.push(NULL);
-        }
+        } 
     }
 }
 
@@ -60,6 +63,6 @@ int main()
     root->right->left = new Node(6);
     root->right->right = new Node(7);
 
-    print_level_order(root);
+    right_view(root);
     return 0;
 }
