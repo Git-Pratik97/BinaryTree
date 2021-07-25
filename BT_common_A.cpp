@@ -43,7 +43,7 @@ int lowest_ca(Node* root, int n1, int n2)
 {
     vector<int> path1, path2;
 
-    if (!get_path(root, n1, path1) || !get_path(root, n2, path2))
+    if (!get_path(root, n1, &path1) || !get_path(root, n2, &path2))
     {
         return -1;
     }
