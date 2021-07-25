@@ -40,7 +40,7 @@ void right_view(Node* root)
                 cout << node->data << " ";
             }
 
-            if (node->right != NULL)
+            if (node->left != NULL)
             {
                 q.push(node->left);
             }
